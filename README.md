@@ -1,6 +1,6 @@
 
 Execute command example
 -----------------------
-
-* sudo node index.js  /var/logs/access
+* sudo npm install -g ddos-defender
+* sudo ddos-defender /var/logs/access
 

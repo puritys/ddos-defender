@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "files": [
-    "index.js", "lib", "package.json"
+    "package.json", "index.js", "lib", "bin"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,9 @@
   "keywords": [
     "ddos"
   ],
+  "bin": {
+    "ddos-defender": "bin/defender.js"
+  },
   "author": "puritys",
   "license": "MIT",
   "dependencies": {
