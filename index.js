@@ -29,10 +29,16 @@ child = spawn ('tail', args);
 
 child.stdout.on ('data', function (data)
 {
+    var passedPaths = ["/jserror", "/mod_pagespeed"];
     var ret = logParser(data.toString());
     if (!ret) return "";
     var promise = [];
     ret.map(function (req) {
+        for (var i in passedPaths) {
+            if (req.path.indexOf(passedPaths[i]) === 0) {
+                return "";
+            }
+        }
         //ddos.isReject(req);
         if (req.protocol.toLowerCase() === "post") {
             promise.push(function () {
