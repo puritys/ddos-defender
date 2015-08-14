@@ -1,0 +1,23 @@
+{
+  "name": "ddos-defender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "files": [
+    "index.js", "lib", "package.json"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ddos"
+  ],
+  "author": "puritys",
+  "license": "MIT",
+  "dependencies": {
+    "q": "^1.4.1",
+    "redis": "^0.12.1",
+    "sync": "^0.2.5",
+    "phplike": "^2.4.6"
+  }
+}
