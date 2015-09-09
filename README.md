@@ -3,9 +3,11 @@ Execute command example
 -----------------------
 * sudo npm install -g ddos-defender
 * sudo ddos-defender conf.js
- 
 
-* conf.js example
+<br />
+
+conf.js example
+-----------------
 
 <pre>
 module.exports = exports = {
