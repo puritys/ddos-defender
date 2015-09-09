@@ -6,13 +6,16 @@ Execute command example
  
 
 * conf.js example
+
 <pre>
 module.exports = exports = {
+
     logFiles: [
         "/var/logs/access"
     ],
     skipPaths: [
         "/jserror", "/mod_pagespeed", "/login.php"
     ]
+    
 };
 </pre>
