@@ -6,17 +6,22 @@ var iptables =require('./lib/iptables.js');
 var accessLogs = [];
 var child, args;
 var Q = require('q');
+var php = require('phplike/module');
 
 
-//if (!conf.files) {
-//    console.log("Missing files on config. ");
-//    process.exit(1);
-//}
 if (process.argc < 3) {
-    console.log("Example: sudo node index.js  /var/logs/access");
+    console.log("Example: sudo node index.js conf.js");
     process.exit();
 }
-accessLogs.push(process.argv[2]);
+
+if (process.argv[2].indexOf('/') != 0) {
+    process.argv[2] = './' + process.argv[2];
+}
+var config = require(process.argv[2]);
+
+config.logFiles.map(function (file) {
+    accessLogs.push(file);
+});
 
 args = ["-f"];
 for (var index in accessLogs) {
@@ -29,7 +34,7 @@ child = spawn ('tail', args);
 
 child.stdout.on ('data', function (data)
 {
-    var passedPaths = ["/jserror", "/mod_pagespeed"];
+    var passedPaths = config.skipPaths;
     var ret = logParser(data.toString());
     if (!ret) return "";
     var promise = [];
