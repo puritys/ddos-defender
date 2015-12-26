@@ -41,8 +41,18 @@ The Real Case to block the bad guy
 <pre>
 Chain INPUT (policy ACCEPT)
 target     prot opt source               destination
+LOG_REJECT  tcp  --  115.135.167.113      anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.149.97       anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  MXJK.JIN-KUI.COM     anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  146.185.234.48       anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.152.239      anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  ohmyweb1.ohmyweb.fr  anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.145.212      anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.148.20       anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.148.67       anywhere             tcp dpt:http
+LOG_REJECT  tcp  --  123.182.159.92       anywhere             tcp dpt:http
 LOG_REJECT  tcp  --  27.17.252.118        anywhere             tcp dpt:http
 LOG_REJECT  tcp  --  123.182.148.96       anywhere             tcp dpt:http
 LOG_REJECT  tcp  --  123.182.146.166      anywhere             tcp dpt:http
-ACCEPT     tcp  --  anywhere             anywhere             tcp dpt:http
+ACCEPT      tcp  --  anywhere             anywhere             tcp dpt:http
 </pre>
