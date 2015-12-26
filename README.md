@@ -3,9 +3,13 @@ DDOS Defender
 
 NPM: https://www.npmjs.com/package/ddos-defender
 
+Please install the redis server first. The library DDOS-defender will use redis to be a storage.
+
+
 Execute command example
 -----------------------
 
+* sudo redis-server  (Start redis)
 * sudo npm install -g ddos-defender
 * sudo ddos-defender conf.js
 
