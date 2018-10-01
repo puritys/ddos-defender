@@ -18,7 +18,9 @@ if (process.argv[2].indexOf('/') != 0) {
     process.argv[2] = './' + process.argv[2];
 }
 var config = require(process.argv[2]);
-
+if (config.blockRule) {
+    ddos.setRule(config.blockRule);
+}
 config.logFiles.map(function (file) {
     accessLogs.push(file);
 });
@@ -34,16 +36,26 @@ child = spawn ('tail', args);
 
 child.stdout.on ('data', function (data)
 {
-    var passedPaths = config.skipPaths;
+    var passedPaths = config.skipPaths, skipIps = ["127.0.0.1"];
     var ret = logParser(data.toString());
     if (!ret) return "";
     var promise = [];
+    if (config.skipIps) {
+        skipIps = config.skipIps;
+    }
     ret.map(function (req) {
         for (var i in passedPaths) {
             if (req.path.indexOf(passedPaths[i]) === 0) {
                 return "";
             }
         }
+        for (var i in skipIps) {
+            if (req.ip.indexOf(skipIps[i]) === 0) {
+                console.log("test skip");
+                return "";
+            }
+        }
+
         //ddos.isReject(req);
         if (req.protocol.toLowerCase() === "post") {
             promise.push(function () {

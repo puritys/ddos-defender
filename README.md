@@ -1,6 +1,8 @@
 DDOS Defender
 =============
 
+cloudflare ip //173.245.48.188
+
 NPM: https://www.npmjs.com/package/ddos-defender
 
 Please install the redis server first. The library DDOS-defender will use redis to be a storage.
@@ -9,7 +11,7 @@ Please install the redis server first. The library DDOS-defender will use redis 
 Execute command example
 -----------------------
 
-* sudo redis-server  (Start redis)
+* sudo redis-server  (Start redis) (install redis first sudo yum install redis)
 * sudo npm install -g ddos-defender
 * sudo ddos-defender conf.js
 
@@ -26,8 +28,17 @@ module.exports = exports = {
     ],
     skipPaths: [
         "/jserror", "/mod_pagespeed", "/login.php"
-    ]
-    
+    ],
+    skipIps: [
+        "127.0.0.1", "192.168"
+    ],
+    blockRule: {
+        timeBase: {
+            limit: 5,   // block this ip if it request 5 times in 60*5 seconds.
+            timeGapMs: 60000 // count limit if the request is smaller than 60 seconds of last request.
+        }
+    }
+
 };
 </pre>
 
