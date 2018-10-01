@@ -1,7 +1,6 @@
 DDOS Defender
 =============
 
-cloudflare ip //173.245.48.188
 
 NPM: https://www.npmjs.com/package/ddos-defender
 
@@ -30,7 +29,7 @@ module.exports = exports = {
         "/jserror", "/mod_pagespeed", "/login.php"
     ],
     skipIps: [
-        "127.0.0.1", "192.168"
+        "127.0.0.1", "192.168", "173.245.48"
     ],
     blockRule: {
         timeBase: {
@@ -40,6 +39,8 @@ module.exports = exports = {
     }
 
 };
+
+// cloudflare ip 173.245.48.188
 </pre>
 
 The Real Case to block the bad guy
